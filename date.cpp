@@ -2,7 +2,7 @@
 #include<time.h>
 #include <stdio.h>                                            
 using namespace std;
-void date_time(void)
+void date(void)
 {
     time_t t = time(0);                                           
     char tmp[64];                                                 

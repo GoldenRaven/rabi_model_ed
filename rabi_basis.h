@@ -7,7 +7,7 @@ class Rabi_basis
 	public:
 		Quant_num * quant_num;
 		Rabi_basis();
-		Rabi_basis(Quant_num * quant_num ,int n_);
+		Rabi_basis(Quant_num * quant_num);
 		~Rabi_basis();
 };
 #endif
