@@ -2,10 +2,10 @@
 #include"rabi_basis.h"
 #include"quant_num.h"
 
-Rabi_basis::Rabi_basis()
+Rabi_basis::Rabi_basis(int n)
 {
 	int zero2downarrow(int);
-	quant_num=new Quant_num [2*(photon_num+1)];
+	quant_num=new Quant_num [n];
 	int k=0;
 	for (int i=0;i<2;i++){
 		for (int j=0;j<photon_num+1;j++){

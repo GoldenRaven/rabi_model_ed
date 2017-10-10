@@ -1,5 +1,5 @@
 #!/bin/bash
-photon_num=10
+photon_num=20
 photon_freq=0.1
 level_spacing=0.3
 coupling=0.2

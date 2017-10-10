@@ -1,7 +1,7 @@
 #.SILENT:
 cc=g++
 name=rabi_ed.x
-objects=main.o rabi_basis.o date.o generate_basis.o globals.o input.o quant_num.o
+objects=main.o rabi_basis.o date.o globals.o input.o quant_num.o operator.o
 
 #CPPFLAGS=-O0 -g
 #CPPFLAGS=-O3
@@ -26,8 +26,8 @@ date.o: date.cpp
 input.o: input.cpp globals.h
 	$(cc)  $(CPPFLAGS) -c input.cpp
 
-generate_basis.o: generate_basis.cpp rabi_basis.h
-	$(cc)  $(CPPFLAGS) -c generate_basis.cpp
+operator.o: operator.cpp globals.h rabi_basis.h operator.h
+	$(cc)  $(CPPFLAGS) -c operator.cpp
 
 clean:
 	rm $(name) $(objects)

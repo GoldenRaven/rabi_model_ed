@@ -5,12 +5,12 @@
 Quant_num::Quant_num()
 {
 	//std::cout << "default construcror called" << std::endl;
-	sigma_=-9;
-	photon_n_=-9;
+	s=-9;
+	n=-9;
 }
 
 void Quant_num::init(int sigma, int photon_n)
 {
-	sigma_=sigma;
-	photon_n_=photon_n;
+	s=sigma;
+	n=photon_n;
 }
