@@ -9,6 +9,5 @@ class Operator //operator matrix.
 		double ** operator_matrix;
 		Operator(int);
 		~Operator();
-		void calc_hamil(Rabi_basis &);
 };
 #endif

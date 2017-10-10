@@ -1,18 +1,21 @@
 #.SILENT:
-cc=g++
+cc=icpc
 name=rabi_ed.x
-objects=main.o rabi_basis.o date.o globals.o input.o quant_num.o operator.o
+objects=main.o rabi_basis.o date.o globals.o input.o quant_num.o operator.o hamilt.o
 
 #CPPFLAGS=-O0 -g
 #CPPFLAGS=-O3
-#MKL_FLAGS=-mkl=sequential
-#OPENMP_FLAGS=-qopenmp
+MKL_FLAGS=-mkl=sequential
+OPENMP_FLAGS=-qopenmp
 
 $(name): $(objects)
 	$(cc) $(CPPFLAGS) $(MKL_FLAGS) $(OPENMP_FLAGS) -o $(name) $(objects) 
 
 main.o: main.cpp 
 	$(cc)  $(CPPFLAGS) -c main.cpp
+
+globals.o: globals.cpp globals.h
+	$(cc)  $(CPPFLAGS)  -c globals.cpp
 
 rabi_basis.o: rabi_basis.cpp rabi_basis.h quant_num.h
 	$(cc)  $(CPPFLAGS)  -c rabi_basis.cpp
@@ -28,6 +31,9 @@ input.o: input.cpp globals.h
 
 operator.o: operator.cpp globals.h rabi_basis.h operator.h
 	$(cc)  $(CPPFLAGS) -c operator.cpp
+
+hamilt.o: hamilt.cpp globals.h rabi_basis.h hamilt.h
+	$(cc)  $(CPPFLAGS) -c hamilt.cpp
 
 clean:
 	rm $(name) $(objects)
