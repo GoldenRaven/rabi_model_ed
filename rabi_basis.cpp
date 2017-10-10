@@ -5,7 +5,7 @@
 #include"quant_num.h"
 using namespace std;
 
-Rabi_basis::Rabi_basis(int n)
+Rabi_basis::Rabi_basis(int n) //constructor.
 {
 	num=n;
 	int zero2downarrow(int);
@@ -19,7 +19,7 @@ Rabi_basis::Rabi_basis(int n)
 	}
 }
 
-Rabi_basis::~Rabi_basis()
+Rabi_basis::~Rabi_basis() //destructor.
 {
 	delete [] quant_num;
 }
@@ -33,10 +33,10 @@ int zero2downarrow(int i) //change zero to -1.
 	}
 }
 
-void Rabi_basis::print_basis()
+void Rabi_basis::print_basis() //print basis.
 {
-	cout << setw(5) << left << "sigma_z" << setw(5) << left << "n" << endl;
+	cout << setw(10) << left << "sigma_z" << setw(10) << left << "n" << endl;
 	for (int i=0;i<num;i++){
-		cout << setw(5) << left << quant_num[i].s << setw(5) << left << quant_num[i].n << endl;
+		cout << setw(10) << left << quant_num[i].s << setw(10) << left << quant_num[i].n << endl;
 	}
 }

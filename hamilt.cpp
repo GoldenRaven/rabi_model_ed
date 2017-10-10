@@ -8,7 +8,7 @@
 #include"hamilt.h"
 using namespace std;
 
-Hamilt::Hamilt(int dim_)
+Hamilt::Hamilt(int dim_) //constructor.
 {
 	dim=dim_;
 	hamilt_matrix=new double * [dim];
@@ -20,7 +20,7 @@ Hamilt::Hamilt(int dim_)
 	}
 }
 
-Hamilt::~Hamilt()
+Hamilt::~Hamilt() //destructor.
 {
 	for (int i=0;i<dim;i++){
 		delete [] hamilt_matrix[i];
@@ -31,7 +31,7 @@ Hamilt::~Hamilt()
 	delete [] eig_val;
 }
 
-void Hamilt::calc_hamilt(Rabi_basis & basis_)// n: length of matrix, get entire hamil
+void Hamilt::calc_hamilt(Rabi_basis & basis_) //get entire hamiltonian matrix.
 {
 	int flip(int);
 	for (int i=0;i<dim;i++){
@@ -54,7 +54,7 @@ void Hamilt::calc_hamilt(Rabi_basis & basis_)// n: length of matrix, get entire 
 	}
 }
 
-void Hamilt::diag_hamilt()
+void Hamilt::diag_hamilt() //diagonalize hamiltonian with MKL.
 {
 	lapack_int n;
 	n=dim;
@@ -89,7 +89,7 @@ void Hamilt::diag_hamilt()
 	}
 }
 
-void Hamilt::print_energy()
+void Hamilt::print_energy() //print eigen energy to file.
 {
 	ofstream f_energy("energy.dat");
 	for (int i=0;i<dim;i++){
@@ -107,7 +107,7 @@ int flip(int s) //flip the spin in basis.
 	}
 }
 
-void Hamilt::print_matrix()
+void Hamilt::print_matrix() //print hamilt_matrix elements.
 {
 	cout << "matrix" << endl;
 	for (int i=0;i<dim;i++){
@@ -117,7 +117,7 @@ void Hamilt::print_matrix()
 	}
 }
 
-double Hamilt::print_Eg()
+double Hamilt::print_Eg() //print groud state energy.
 {
 	return eig_val[0];
 }
