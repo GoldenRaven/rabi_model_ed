@@ -14,5 +14,7 @@ class Hamilt //hamiltonian matrix.
 		void calc_hamilt(Rabi_basis &);
 		void diag_hamilt();
 		void print_energy();
+		void print_matrix();
+		double print_Eg();
 };
 #endif

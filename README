@@ -1,0 +1,5 @@
+compiler Intel icpc.
+Inter library MKL used to diagonalize.
+all parameters read from input file "input.in".
+exclusive file rabi_ed.x to run.
+parameters input and running program collected in "job.bash".

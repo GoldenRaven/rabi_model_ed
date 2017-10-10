@@ -1,7 +1,7 @@
 #.SILENT:
 cc=icpc
 name=rabi_ed.x
-objects=main.o rabi_basis.o date.o globals.o input.o quant_num.o operator.o hamilt.o
+objects=main.o rabi_basis.o date.o globals.o input.o output.o quant_num.o operator.o hamilt.o 
 
 #CPPFLAGS=-O0 -g
 #CPPFLAGS=-O3
@@ -28,6 +28,9 @@ date.o: date.cpp
 
 input.o: input.cpp globals.h
 	$(cc)  $(CPPFLAGS) -c input.cpp
+
+output.o: output.cpp globals.h
+	$(cc)  $(CPPFLAGS) -c output.cpp
 
 operator.o: operator.cpp globals.h rabi_basis.h operator.h
 	$(cc)  $(CPPFLAGS) -c operator.cpp

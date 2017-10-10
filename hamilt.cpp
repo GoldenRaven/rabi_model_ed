@@ -36,18 +36,18 @@ void Hamilt::calc_hamilt(Rabi_basis & basis_)// n: length of matrix, get entire 
 	int flip(int);
 	for (int i=0;i<dim;i++){
 		for (int j=0;j<dim;j++){
-			int part1,part2,part3_1,part3_2;
+			double part1,part2,part3_1,part3_2;
 			part1=photon_freq*basis_.quant_num[j].n*kronecker_delta(basis_.quant_num[i].s,basis_.quant_num[j].s)*kronecker_delta(basis_.quant_num[i].n,basis_.quant_num[j].n);
 			part2=level_spacing/2.0*basis_.quant_num[j].s*kronecker_delta(basis_.quant_num[i].s,basis_.quant_num[j].s)*kronecker_delta(basis_.quant_num[i].n,basis_.quant_num[j].n);
 			if (basis_.quant_num[j].n==0){
 				part3_1=0;
 			}else{
-				part3_1=sqrt(basis_.quant_num[j].n)*kronecker_delta(flip(basis_.quant_num[j].s),basis_.quant_num[i].s)*kronecker_delta(basis_.quant_num[i].n,basis_.quant_num[j].n-1);
+				part3_1=-1.0*coupling*sqrt(basis_.quant_num[j].n)*kronecker_delta(flip(basis_.quant_num[j].s),basis_.quant_num[i].s)*kronecker_delta(basis_.quant_num[i].n,basis_.quant_num[j].n-1);
 			}
 			if (basis_.quant_num[i].n==0){
 				part3_2=0;
 			}else{
-				part3_2=sqrt(basis_.quant_num[j].n+1)*kronecker_delta(flip(basis_.quant_num[j].s),basis_.quant_num[i].s)*kronecker_delta(basis_.quant_num[i].n,basis_.quant_num[j].n+1);
+				part3_2=-1.0*coupling*sqrt(basis_.quant_num[j].n+1)*kronecker_delta(flip(basis_.quant_num[j].s),basis_.quant_num[i].s)*kronecker_delta(basis_.quant_num[i].n,basis_.quant_num[j].n+1);
 			}
 			hamilt_matrix[i][j]=part1+part2+part3_1+part3_2;
 		}
@@ -67,12 +67,12 @@ void Hamilt::diag_hamilt()
 			k++;
 		}
 	}}
-	// calling MKL to diagnolize.
+	// calling MKL to diagonalize.
 	lapack_int lda;
 	lda=dim;
 	double vl,vu;
 	lapack_int il,iu;
-	double abstol=1e-20; //error tolerance?
+	double abstol=1e-15; //error tolerance?
 	lapack_int * m;
 	m=& lda;
 	lapack_complex_double * z= new lapack_complex_double [dim*dim];
@@ -105,4 +105,19 @@ int flip(int s) //flip the spin in basis.
 	}else if (s==-1){
 		return 1;
 	}
+}
+
+void Hamilt::print_matrix()
+{
+	cout << "matrix" << endl;
+	for (int i=0;i<dim;i++){
+		for (int j=0;j<dim;j++){
+			cout << hamilt_matrix[i][j] << endl;
+		}
+	}
+}
+
+double Hamilt::print_Eg()
+{
+	return eig_val[0];
 }
