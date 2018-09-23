@@ -4,17 +4,17 @@
 
 class Hamilt //hamiltonian matrix.
 {
-	public:
-		int dim;
-		double ** hamilt_matrix;
-		double ** eig_stat;
-		double *  eig_val;
-		Hamilt(int);
-		~Hamilt();
-		void calc_hamilt(Rabi_basis &);
-		void diag_hamilt();
-		void print_energy();
-		void print_matrix();
-		double print_Eg();
+ public:
+    int dim;
+    double ** hamilt_matrix;
+    double ** eig_stat;
+    double *  eig_val;
+    Hamilt(int);
+    ~Hamilt();
+    void calc_hamilt(Rabi_basis &);
+    void diag_hamilt();
+    void print_energy();
+    void print_matrix();
+    double print_Eg();
 };
 #endif

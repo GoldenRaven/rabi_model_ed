@@ -4,10 +4,10 @@
 
 class Operator //operator matrix.
 {
-	public:
-		int dim;
-		double ** operator_matrix;
-		Operator(int);
-		~Operator();
+ public:
+    int dim;
+    double ** operator_matrix;
+    Operator(int);
+    ~Operator();
 };
 #endif
